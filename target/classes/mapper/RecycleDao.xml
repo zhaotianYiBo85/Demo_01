@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ityuan.dao.RecycleDao">
+    <!--管理员查询所有的预约回收垃圾记录-->
+    <select id="findRecycle" resultType="com.ityuan.pojo.Recycle" parameterType="com.ityuan.pojo.Recycle">
+        select * from tb_recycle
+        <where>
+            <if test="location!=null and location!=''">
+                and location=#{location}
+            </if>
+            <if test="largeLeiBie!=null and largeLeiBie!=''">
+                and largeLeiBie=#{largeLeiBie}
+            </if>
+            <if test="kilograms!=null and kilograms!=''">
+                and kilograms=#{kilograms}
+            </if>
+            <if test="telephone!=null and telephone!=''">
+                and telephone=#{telephone}
+            </if>
+            <if test="order_status!=null and order_status!=''">
+                and order_status=#{order_status}
+            </if>
+        </where>
+    </select>
+
+    <!--根据用户id查询用户的所有预约订单记录-->
+    <select id="findRecycleByUid" resultType="com.ityuan.pojo.Recycle" parameterType="com.ityuan.pojo.Recycle">
+        select * from tb_recycle where user_id=#{user_id}
+    </select>
+
+    <insert id="addRecycle" parameterType="com.ityuan.pojo.Recycle">
+        insert into tb_recycle (
+        location,
+        largeLeiBie,
+        kilograms,
+        telephone,
+        order_status
+        )values (
+        #{location},
+        #{largeLeiBie},
+        #{kilograms},
+        #{telephone},
+        #{order_status}
+        )
+    </insert>
+    
+    <delete id="deleteRecycle" parameterType="com.ityuan.pojo.Recycle">
+        delete from tb_recycle where id=#{id}
+    </delete>
+
+    <update id="updateRecycle" parameterType="com.ityuan.pojo.Recycle">
+        update tb_recycle
+        <set>
+            <if test="location">
+                location=#{location},
+            </if>
+            <if test="largeLeiBie">
+                largeLeiBie=#{largeLeiBie},
+            </if>
+            <if test="kilograms">
+                kilograms=#{kilograms},
+            </if>
+            <if test="telephone">
+                telephone=#{telephone}
+            </if>
+            <if test="order_status">
+                order_status=#{order_status}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+</mapper>

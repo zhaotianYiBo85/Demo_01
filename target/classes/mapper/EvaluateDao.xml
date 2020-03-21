@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ityuan.dao.EvaluateDao">
+<!--根据用户id查询评价详情-->
+    <select id="findEvaluateById" resultType="com.ityuan.pojo.Evaluate" parameterType="Integer">
+        select * from tb_eva where user_id=#{user_id}
+        <!--<where>
+            <if test="eva_context!=null and eva_context!=''">
+                and eva_context=#{eva_context}
+            </if>
+            <if test="eva_star!=null and eva_star!=''">
+                and eva_star=#{eva_star}
+            </if>
+        </where>-->
+    </select>
+
+    <!--根据商品id查询评价详情-->
+    <select id="findEvaluateByProId" resultType="com.ityuan.pojo.Evaluate" parameterType="Integer">
+        select * from tb_eva where pro_id=#{pro_id}
+    </select>
+    
+    <insert id="addEvaluate" parameterType="com.ityuan.pojo.Evaluate">
+        insert into tb_eva(
+        eva_context,
+        eva_star
+        )values (
+        #{eva_context},
+        #{eva_star}
+        )
+    </insert>
+
+    <!--用户更新评价信息-->
+    <update id="updataEvaluate" parameterType="com.ityuan.pojo.Evaluate">
+        update tb_eva
+        <set>
+            <if test="eva_context">
+                eva_context=#{eva_context},
+            </if>
+            <if test="eva_star">
+                eva_star=#{eva_star},
+            </if>
+        </set>
+        where eva_id=#{eva_id}
+    </update>
+
+    <delete id="deleteEvaluate" parameterType="com.ityuan.pojo.Evaluate">
+        delete from tb_eva where eva_id=#{eva_id}
+    </delete>
+</mapper>

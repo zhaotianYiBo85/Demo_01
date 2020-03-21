@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ityuan.dao.ImagesPathDao">
+
+    <!--根据pid查询图片地址-->
+    <select id="selectByPid" parameterType="int" resultType="com.ityuan.pojo.ImagesPath">
+        select * from tb_proimages where pro_id=#{pro_id}
+    </select>
+
+    <!--插入图片-->
+    <insert id="addImagesPath" parameterType="com.ityuan.pojo.ImagesPath">
+        insert into tb_proimages(pro_id,imgName,imgPath) values (#{pro_id},#{imgName},#{imgPath})
+    </insert>
+
+
+
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ityuan.dao.AddressesDao">
+
+    <insert id="addAddress" parameterType="com.ityuan.pojo.Addresses">
+        insert into tb_addresses values (#{addr_id},#{recever},#{phone},#{address},#{user_id})
+    </insert>
+
+    <update id="updateAddress" parameterType="com.ityuan.pojo.Addresses">
+        update tb_addresses
+        <set>
+            <if test="recever !=null and recever !='' ">
+                recever=#{recever}
+            </if>
+            <if test="phone !=null and phone !='' ">
+                phone=#{phone}
+            </if>
+            <if test="address !=null and address !='' ">
+                address=#{address}
+            </if>
+            <if test="user_id !=null and user_id !='' ">
+                uid=#{user_id}
+            </if>
+        </set>
+        where aid=#{aid}
+    </update>
+
+    <delete id="deleteAddress" parameterType="int">
+        delete from tb_addresses where addr_id=#{addr_id}
+    </delete>
+
+    <select id="selectAddrByUid" parameterType="String" resultType="com.ityuan.pojo.Addresses">
+        select * from tb_addresses where user_id=#{user_id}
+    </select>
+
+
+
+</mapper>

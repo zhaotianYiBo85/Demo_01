@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ityuan.dao.UserDao">
+
+    <select id="login" parameterType="com.ityuan.pojo.User" resultType="com.ityuan.pojo.User">
+        select * from tb_user where 1=1
+        <if test="user_nickName != null and user_nickName != ''">
+            and user_nickName=#{user_nickName}
+        </if>
+        <if test="user_password != null and user_password != ''">
+            and user_password=#{user_password}
+        </if>
+    </select>
+
+    <insert id="register" parameterType="com.ityuan.pojo.User">
+    insert into tb_user (user_id,user_telephone,user_password) values (#{user_id},#{user_telephone},#{user_password})
+    </insert>
+
+    <select id="selectUserByToken" parameterType="String" resultType="com.ityuan.pojo.User">
+    select * from tb_user
+    where token=#{token}
+  </select>
+
+    <!--增加用户-->
+    <insert id="insertUser" parameterType="com.ityuan.pojo.User">
+        insert into tb_user values (
+        #{user_id},#{user_nickName},#{user_name},#{user_sefinftro},#{user_birth},#{user_idcard}
+        ,#{user_photo},#{user_bgImage},#{user_telephone},#{user_location},#{user_sex},
+        #{user_password},#{token})
+    </insert>
+
+    <select id="selectUserByPhone" parameterType="String" resultType="com.ityuan.pojo.User">
+        select * from tb_user where user_telephone=#{usertelephone}
+    </select>
+
+    <!--  根据手机号和密码查询用户  -->
+    <select id="selectUserByTelephoneAndPassword" resultType="com.ityuan.pojo.User" parameterType="String">
+        SELECT * FROM tb_user WHERE user_telephone=#{usertelephone} and user_password=#{userpassword}
+    </select>
+
+    <update id="updateByPrimaryKey" parameterType="com.ityuan.pojo.User">
+    update tb_user
+    <set>
+    <if test="user_nickName !=null">
+        user_nickName=#{user_nickName},
+    </if>
+    <if test="user_name !=null">
+        user_name=#{user_name},
+    </if>
+    <if test="user_sefinftro !=null">
+        user_sefinftro=#{user_sefinftro},
+    </if>
+    <if test="user_birth !=null">
+        user_birth=#{user_birth},
+    </if>
+    <if test="user_idcard !=null">
+        user_idcard=#{user_idcard},
+    </if>
+    <if test="user_photo !=null">
+        user_photo=#{user_photo},
+    </if>
+    <if test="user_bgImage !=null">
+        user_bgImage=#{user_bgImage},
+    </if>
+    <if test="user_telephone !=null">
+        user_telephone=#{user_telephone},
+    </if>
+    <if test="user_location !=null">
+        user_location=#{user_location},
+    </if>
+    <if test="user_sex !=null">
+        user_sex=#{user_sex},
+    </if>
+    <if test="user_password !=null">
+        user_password=#{user_password},
+    </if>
+    <if test="user_location !=null">
+        user_location=#{user_location},
+    </if>
+    <if test="token !=null">
+    token=#{token}
+    </if>
+    </set>
+    </update>
+</mapper>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>垃圾回收预约</title>
+    <script src="../bootstrap/js/jquery-3.4.1.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/recycle.js"></script>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div>
+    <div class="text-center">
+        <h5> 垃圾回收预约</h5>
+    </div>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">地址</label>
+            <div class="col-sm-10">
+                <input class="form-control"  id="location" type="text"  placeholder="地址">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">垃圾类别</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="largeLeiBie"  type="text"  placeholder="垃圾类别">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">电话号码</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="telephone" type="text"  placeholder="电话号码">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">重量</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="kilograms"  type="text"  placeholder="公斤数">
+            </div>
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-primary" onclick="addRecycle()">
+                提交预约
+            </button>
+        </div>
+
+
+        <!--<div class="form-group has-success">-->
+            <!--<label class="col-sm-2 control-label" for="inputSuccess">输入成功</label>-->
+            <!--<div class="col-sm-10">-->
+                <!--<input type="text" class="form-control" id="inputSuccess">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="form-group has-warning">-->
+            <!--<label class="col-sm-2 control-label" for="inputWarning">输入警告</label>-->
+            <!--<div class="col-sm-10">-->
+                <!--<input type="text" class="form-control" id="inputWarning">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="form-group has-error">-->
+            <!--<label class="col-sm-2 control-label" for="inputError">输入错误</label>-->
+            <!--<div class="col-sm-10">-->
+                <!--<input type="text" class="form-control" id="inputError">-->
+            <!--</div>-->
+        <!--</div>-->
+    </form>
+</div>
+
+
+
+</body>
+</html>
