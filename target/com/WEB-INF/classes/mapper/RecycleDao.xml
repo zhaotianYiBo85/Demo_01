@@ -21,6 +21,18 @@
             <if test="order_status!=null and order_status!=''">
                 and order_status=#{order_status}
             </if>
+            <if test="user_id!=null and user_id!=''">
+                and user_id=#{user_id}
+            </if>
+            <if test="gotime!=null and gotime!=''">
+                and gotime=#{gotime}
+            </if>
+            <if test="person!=null and person!=''">
+                and person=#{person}
+            </if>
+            <if test="ordertime!=null and ordertime!=''">
+                and ordertime=#{ordertime}
+            </if>
         </where>
     </select>
 
@@ -35,13 +47,21 @@
         largeLeiBie,
         kilograms,
         telephone,
-        order_status
+        user_id,
+        order_status,
+        gotime,
+        person,
+        ordertime
         )values (
         #{location},
         #{largeLeiBie},
         #{kilograms},
         #{telephone},
-        #{order_status}
+        #{order_status},
+        #{user_id},
+        #{gotime},
+        #{person},
+        #{ordertime}
         )
     </insert>
     
@@ -62,10 +82,22 @@
                 kilograms=#{kilograms},
             </if>
             <if test="telephone">
-                telephone=#{telephone}
+                telephone=#{telephone},
             </if>
             <if test="order_status">
-                order_status=#{order_status}
+                order_status=#{order_status},
+            </if>
+            <if test="user_id!=null and user_id!=''">
+                and user_id=#{user_id}
+            </if>
+            <if test="gotime!=null and gotime!=''">
+                and gotime=#{gotime},
+            </if>
+            <if test="person!=null and person!=''">
+                and person=#{person},
+            </if>
+            <if test="ordertime!=null and ordertime!=''">
+                and ordertime=#{ordertime}
             </if>
         </set>
         where id=#{id}

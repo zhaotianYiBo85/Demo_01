@@ -68,7 +68,7 @@ public class UserController {
     @ResponseBody
     public JsonMessage updateByPrimaryKey(@RequestParam(value = "user", required = false) String user, String token) {
         try {
-            //将接受到的json字符串转为eUsr对象
+            //将接受到的json字符串转为User对象
             User users = JSON.parseObject(user, User.class);
             //通过token查找用户的主键
             User byToken = userService.selectUserByToken(token);

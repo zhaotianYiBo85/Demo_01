@@ -130,10 +130,10 @@ public class Order {
 
     public String getOd_pay_timeStr() {
         if(od_pay_time!=null){
-            od_pay_timeStr= DateUtils.date2string(od_pay_time,"yyyy-MM-dd HH:mm-ss");
-        }
-        return od_pay_timeStr;
+        od_pay_timeStr= DateUtils.date2string(od_pay_time,"yyyy-MM-dd HH:mm-ss");
     }
+        return od_pay_timeStr;
+}
 
     public void setOd_pay_timeStr(String od_pay_timeStr) {
         this.od_pay_timeStr = od_pay_timeStr;

@@ -3,7 +3,6 @@ package com.ityuan.utils;
 import java.util.UUID;
 
 /**
- * Created by xiao on 2018/10/27.
  * 返回随机生成的36位字符串
  */
 public class TokenProccessor {

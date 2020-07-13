@@ -23,7 +23,7 @@
                 uid=#{user_id}
             </if>
         </set>
-        where aid=#{aid}
+        where addr_id=#{addr_id}
     </update>
 
     <delete id="deleteAddress" parameterType="int">

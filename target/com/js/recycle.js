@@ -3,12 +3,18 @@ function addRecycle() {
     var largeLeiBie = $("input[id=largeLeiBie]")[0].value;
     var telephone = $("input[id =telephone]")[0].value;
     var kilograms = $("input[id =kilograms]")[0].value;
+    var gotime = $("input[id =gotime]")[0].value;
+    var person = $("input[id =person]")[0].value;
+
+
 
     var a = {
         'location' : location,
         'largeLeiBie' : largeLeiBie,
         'telephone' : telephone,
-        'kilograms' : kilograms
+        'kilograms' : kilograms,
+        'gotime':gotime,
+        'person':person
     }
     $.ajax({
         // 请求方式

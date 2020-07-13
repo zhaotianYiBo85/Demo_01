@@ -34,8 +34,8 @@ public class OrderController {
     * 用户新增订单
     * */
     @ResponseBody
-    @RequestMapping(value = "/insertOrder",method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
-    public JsonMessage insertOrder(@RequestParam(value = "orderSimples",required = false) String  orderSimples, String od_payTypeStr,int addr_id, String token){
+    @RequestMapping(value = "/insertOrder",method = RequestMethod.GET,produces = "application/json;charset=UTF-8")
+    public JsonMessage insertOrder(@RequestParam(value = "orderSimples",required = false) String  orderSimples,int addr_id, String token){
         List<OrderSimple> list= JSON.parseArray(orderSimples,OrderSimple.class);
         User user = userService.selectUserByToken(token);
         Order order=new Order();
@@ -48,7 +48,6 @@ public class OrderController {
                 order.setUser_id(user.getUser_id());
                 order.setPro_id(list.get(i).getPro_id());
                 order.setPro_num(list.get(i).getOd_num());
-                order.setOd_payTypeStr(od_payTypeStr);
                 order.setOd_price(productService.selectByProId(list.get(i).getPro_id()).getPro_price()*list.get(i).getOd_num());
                 order.setOd_statusStr("待发货");
                 /*

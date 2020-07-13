@@ -19,30 +19,34 @@ public class GarBageController {
     private GarBageService garBageService;
 
     @RequestMapping("/insert")
-    public String insert(GarBage garBage, Model model) {
+    public Map<String,Object> insert(GarBage garBage, Model model) {
         System.out.println(garBage.toString());
+        Map<String, Object> garbageList = new HashMap<String, Object>();
         int rows = garBageService.insert(garBage);
         if (rows > 0) {
-            model.addAttribute("msg", "插入成功");
-            return "index";
+           garbageList.put("code",100);
+           garbageList.put("msg","插入成功");
+           return garbageList;
+
         } else {
-            model.addAttribute("msg", "插入失败");
-            return "index";
+            garbageList.put("code",200);
+            garbageList.put("msg","插入失败");
+            return garbageList;
         }
 
     }
 
     @RequestMapping("/listGarbage")
     @ResponseBody
-    private Map<String, Object> ListGarBage(String name) {
+    private Map<String, Object> ListGarBage(String gname) {
         Map<String, Object> garbageList = new HashMap<String, Object>();
-        if (name.isEmpty()) {
+        if (gname.isEmpty()) {
             garbageList.put("code", 250);
             garbageList.put("message", "输入不能为空");
             garbageList.put("datalist", null);
             return garbageList;
         } else {
-            List<GarBage> datalist = garBageService.selectByName(name);
+            List<GarBage> datalist = garBageService.selectByName(gname);
             if (datalist.size() > 0) {
                 garbageList.put("code", 200);
                 garbageList.put("message", "success");
@@ -59,9 +63,9 @@ public class GarBageController {
 
     @RequestMapping("/selectbytype")
     @ResponseBody
-    private Map<String, Object> ListByType(int type) {
+    private Map<String, Object> ListByType(int gtype) {
         Map<String, Object> garbageMap = new HashMap<String, Object>();
-        List<GarBage> datalist = garBageService.selectByType(type);
+        List<GarBage> datalist = garBageService.selectByType(gtype);
         if (datalist.size() > 0) {
             garbageMap.put("code", 200);
             garbageMap.put("message", "success");
